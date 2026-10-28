@@ -9,3 +9,6 @@ local.properties
 .idea
 *.iml
 *.hprof
+
+# Machine-local endpoint override
+lab.local.properties

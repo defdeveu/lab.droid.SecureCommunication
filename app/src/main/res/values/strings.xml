@@ -1,8 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SecureCommunications</string>
-    <string name="enter_your_message_here">Enter your message here...</string>
-    <string name="send_message">Send Message</string>
-    <string name="to_be_displayed">(to be displayed)</string>
-    <string name="enter_message">Enter message:</string>
-    <string name="returned_message">Returned message</string>
+    <string name="app_name">Secure Communication</string>
+    <string name="exchange_title">Protect a message above the transport layer</string>
+    <string name="exchange_supporting">Encrypt and sign a message, send it, then read the server\'s response.</string>
+    <string name="section_message">Message</string>
+    <string name="section_status">Status</string>
+    <string name="section_raw_response">Server response</string>
+    <string name="section_acknowledgment">Decrypted acknowledgment</string>
+    <string name="action_send">Encrypt and send</string>
+    <string name="action_sending">Sending…</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="status_ready">Ready</string>
+    <string name="status_sending">Encrypting and sending…</string>
+    <string name="status_received">Response received</string>
+    <string name="status_cancelled">Request cancelled</string>
+    <string name="placeholder_raw_response">No response received yet.</string>
+    <string name="placeholder_acknowledgment">A valid response will be decrypted here.</string>
+    <string name="configuration_error">Configuration error: %1$s</string>
+    <string name="error_empty_message">Enter a message first.</string>
+    <string name="error_invalid_endpoint">The configured endpoint is not a valid URL.</string>
+    <string name="error_keys_unavailable">Required application resources are missing or unreadable.</string>
+    <string name="error_encryption_failed">The message could not be encrypted.</string>
+    <string name="error_signing_failed">The message could not be signed.</string>
+    <string name="error_transport_failed">The server could not be reached.</string>
+    <string name="error_server_status">The server returned HTTP status %1$d.</string>
+    <string name="error_response_content_type">The server returned an unexpected content type.</string>
+    <string name="error_response_shape">The server response has an unexpected shape.</string>
+    <string name="error_decryption_failed">The server response could not be decrypted.</string>
 </resources>

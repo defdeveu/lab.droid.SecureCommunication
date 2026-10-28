@@ -1,0 +1,3 @@
+# Copy to lab.local.properties to override the endpoint for a local rehearsal.
+# The copy is gitignored and read at build time, so rebuild after changing it.
+lab.endpoint=https://localhost:8443/secure-communication/request
