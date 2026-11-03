@@ -3,24 +3,42 @@ package dev.def.lab.droid.securecommunication.ui
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.isShiftPressed
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.def.lab.droid.securecommunication.ExchangeStatus
@@ -28,17 +46,21 @@ import dev.def.lab.droid.securecommunication.R
 import dev.def.lab.droid.securecommunication.SecureCommunicationViewModel
 import dev.def.lab.droid.securecommunication.error.LabError
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun ExchangeScreen(viewModel: SecureCommunicationViewModel) {
+    val focusManager = LocalFocusManager.current
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val emptyMessage = state.error == LabError.EmptyMessage
+    val failure = state.configurationError ?: state.error?.takeUnless { emptyMessage }
+    val hasError = (failure != null) || emptyMessage
 
-    Scaffold(
-        topBar = { TopAppBar(title = { Text(text = stringResource(R.string.app_name)) }) },
-    ) { insets ->
+    Scaffold(topBar = { LabHeader() }) { insets ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(insets)
+                .imePadding()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -52,7 +74,8 @@ fun ExchangeScreen(viewModel: SecureCommunicationViewModel) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
                         text = stringResource(R.string.exchange_title),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleLargeEmphasized,
+                        modifier = Modifier.semantics { heading() },
                     )
                     Text(
                         text = stringResource(R.string.exchange_supporting),
@@ -61,71 +84,117 @@ fun ExchangeScreen(viewModel: SecureCommunicationViewModel) {
                     )
                 }
 
-                SectionCard(title = stringResource(R.string.section_message)) {
-                    OutlinedTextField(
-                        value = state.message,
-                        onValueChange = viewModel::onMessageChange,
-                        modifier = Modifier.fillMaxWidth(),
-                        enabled = !state.isRunning,
-                    )
-                }
-
-                PrimaryAction(
-                    label = stringResource(
-                        if (state.isRunning) R.string.action_sending else R.string.action_send,
-                    ),
-                    onClick = viewModel::send,
-                    enabled = !state.isRunning && state.isConfigured,
+                TextField(
+                    value = state.message,
+                    onValueChange = viewModel::onMessageChange,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onPreviewKeyEvent { event ->
+                            if (event.key == Key.Tab) {
+                                if (event.type == KeyEventType.KeyDown) {
+                                    focusManager.moveFocus(
+                                        if (event.isShiftPressed) FocusDirection.Previous else FocusDirection.Next,
+                                    )
+                                }
+                                true
+                            } else {
+                                false
+                            }
+                        },
+                    enabled = !state.isRunning,
+                    label = {
+                        Text(
+                            text = stringResource(R.string.section_message),
+                            fontWeight = MaterialTheme.typography.labelLargeEmphasized.fontWeight,
+                        )
+                    },
+                    minLines = 3,
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
+                    shape = MaterialTheme.shapes.large,
+                    isError = emptyMessage,
+                    supportingText = if (emptyMessage) {
+                        { Text(text = stringResource(R.string.error_empty_message)) }
+                    } else {
+                        null
+                    },
                 )
 
-                if (state.isRunning) {
-                    OutlinedButton(
-                        onClick = viewModel::cancel,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .heightIn(min = 52.dp),
-                    ) {
-                        Text(text = stringResource(R.string.action_cancel))
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    PrimaryAction(
+                        label = stringResource(
+                            if (state.isRunning) R.string.action_sending else R.string.action_send,
+                        ),
+                        onClick = viewModel::send,
+                        enabled = state.isConfigured,
+                        isRunning = state.isRunning,
+                        modifier = Modifier.weight(1f).widthIn(min = 200.dp),
+                    )
+                    if (state.isRunning) {
+                        OutlinedButton(
+                            onClick = viewModel::cancel,
+                            modifier = Modifier.heightIn(min = 56.dp),
+                        ) {
+                            Text(text = stringResource(R.string.action_cancel))
+                        }
                     }
                 }
 
-                SectionCard(title = stringResource(R.string.section_status)) {
-                    Text(
-                        text = stringResource(state.status.labelRes()),
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
-                }
-
-                SectionCard(title = stringResource(R.string.section_raw_response)) {
-                    OutputPane(
+                ResultGroup {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        if (state.isRunning) {
+                            LoadingIndicator()
+                        }
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+                        ) {
+                            Text(
+                                text = stringResource(R.string.section_status),
+                                style = MaterialTheme.typography.titleSmallEmphasized,
+                                modifier = Modifier.semantics { heading() },
+                            )
+                            Text(
+                                text = stringResource(
+                                    when {
+                                        state.configurationError != null -> R.string.status_configuration
+                                        failure != null -> R.string.status_failed
+                                        emptyMessage -> R.string.status_validation
+                                        else -> state.status.labelRes()
+                                    },
+                                ),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = if (hasError) {
+                                    MaterialTheme.colorScheme.error
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface
+                                },
+                            )
+                            failure?.let { error ->
+                                Text(
+                                    text = stringResource(error.messageRes(), error.statusCode()),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.error,
+                                )
+                            }
+                        }
+                    }
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                    OutputSection(
+                        title = stringResource(R.string.section_raw_response),
                         text = state.rawResponse,
                         placeholder = stringResource(R.string.placeholder_raw_response),
                     )
-                }
-
-                SectionCard(title = stringResource(R.string.section_acknowledgment)) {
-                    OutputPane(
+                    OutputSection(
+                        title = stringResource(R.string.section_acknowledgment),
                         text = state.acknowledgment,
                         placeholder = stringResource(R.string.placeholder_acknowledgment),
-                    )
-                }
-
-                state.configurationError?.let { error ->
-                    Text(
-                        text = stringResource(
-                            R.string.configuration_error,
-                            stringResource(error.messageRes(), error.statusCode()),
-                        ),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                }
-
-                state.error?.let { error ->
-                    Text(
-                        text = stringResource(error.messageRes(), error.statusCode()),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.error,
                     )
                 }
             }

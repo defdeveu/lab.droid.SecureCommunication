@@ -1,35 +1,36 @@
 package dev.def.lab.droid.securecommunication.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.MotionScheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 
-private val LightColors = lightColorScheme(
-    primary = PrimaryOnLight,
-    onPrimary = Color.White,
-    primaryContainer = BrandOrange,
-    onPrimaryContainer = Color.Black,
-)
+private val LabTypography = Typography(fontFamily = FontFamily.Default).let { scale ->
+    scale.copy(
+        displayLarge = scale.displayLargeEmphasized,
+        displayMedium = scale.displayMediumEmphasized,
+        displaySmall = scale.displaySmallEmphasized,
+        headlineLarge = scale.headlineLargeEmphasized,
+        headlineMedium = scale.headlineMediumEmphasized,
+        headlineSmall = scale.headlineSmallEmphasized,
+        titleLarge = scale.titleLargeEmphasized,
+        titleMedium = scale.titleMediumEmphasized,
+        titleSmall = scale.titleSmallEmphasized,
+        labelLarge = scale.labelLargeEmphasized,
+        labelMedium = scale.labelMediumEmphasized,
+        labelSmall = scale.labelSmallEmphasized,
+    )
+}
 
-private val DarkColors = darkColorScheme(
-    primary = PrimaryOnDark,
-    onPrimary = Color.Black,
-)
-
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun SecureCommunicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
     MaterialExpressiveTheme(
-        colorScheme = if (darkTheme) DarkColors else LightColors,
+        colorScheme = LabLightColors,
         motionScheme = MotionScheme.expressive(),
+        typography = LabTypography,
         content = content,
     )
 }

@@ -1,7 +1,55 @@
 package dev.def.lab.droid.securecommunication.theme
 
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-val BrandOrange = Color(0xFFD76F2B)
-val PrimaryOnLight = Color(0xFFB45309)
-val PrimaryOnDark = Color(0xFFF2A46B)
+val LabLightColors = lightColorScheme(
+    primary = Color(0xFF974900),
+    onPrimary = Color.White,
+    primaryContainer = Color(0xFFFFDCC3),
+    onPrimaryContainer = Color(0xFF321300),
+    inversePrimary = Color(0xFFFFB77D),
+    secondary = Color(0xFF765741),
+    onSecondary = Color.White,
+    secondaryContainer = Color(0xFFFFDCC3),
+    onSecondaryContainer = Color(0xFF2B1708),
+    tertiary = Color(0xFF596239),
+    onTertiary = Color.White,
+    tertiaryContainer = Color(0xFFDDE8B2),
+    onTertiaryContainer = Color(0xFF171E00),
+    background = Color(0xFFFFF8F3),
+    onBackground = Color(0xFF241A13),
+    surface = Color(0xFFFFF8F3),
+    onSurface = Color(0xFF241A13),
+    surfaceVariant = Color(0xFFF5E5D8),
+    onSurfaceVariant = Color(0xFF6F5B4D),
+    surfaceTint = Color(0xFF974900),
+    inverseSurface = Color(0xFF392E26),
+    inverseOnSurface = Color(0xFFFFEDE0),
+    error = Color(0xFFA32B25),
+    onError = Color.White,
+    errorContainer = Color(0xFFFFDAD5),
+    onErrorContainer = Color(0xFF410002),
+    outline = Color(0xFF897264),
+    outlineVariant = Color(0xFFD5BDA9),
+    scrim = Color.Black,
+    surfaceBright = Color(0xFFFFF8F3),
+    surfaceDim = Color(0xFFE7D7CB),
+    surfaceContainerLowest = Color.White,
+    surfaceContainerLow = Color(0xFFFFF1E8),
+    surfaceContainer = Color(0xFFFAEAE0),
+    surfaceContainerHigh = Color(0xFFF5E5D8),
+    surfaceContainerHighest = Color(0xFFEEDDD0),
+    primaryFixed = Color(0xFFFFDCC3),
+    primaryFixedDim = Color(0xFFFFB77D),
+    onPrimaryFixed = Color(0xFF321300),
+    onPrimaryFixedVariant = Color(0xFF713500),
+    secondaryFixed = Color(0xFFFFDCC3),
+    secondaryFixedDim = Color(0xFFE6BFA3),
+    onSecondaryFixed = Color(0xFF2B1708),
+    onSecondaryFixedVariant = Color(0xFF5B402C),
+    tertiaryFixed = Color(0xFFDDE8B2),
+    tertiaryFixedDim = Color(0xFFC1CC98),
+    onTertiaryFixed = Color(0xFF171E00),
+    onTertiaryFixedVariant = Color(0xFF414A24),
+)

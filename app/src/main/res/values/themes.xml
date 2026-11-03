@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.SecureCommunication" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.SecureCommunication.Base" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">#FFF8F3</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+    <style name="Theme.SecureCommunication" parent="Theme.SecureCommunication.Base" />
 </resources>

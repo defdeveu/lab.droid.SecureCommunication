@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Secure Communication</string>
+    <string name="app_name">Secure Communication Lab</string>
     <string name="exchange_title">Protect a message above the transport layer</string>
     <string name="exchange_supporting">Encrypt and sign a message, send it, then read the server\'s response.</string>
     <string name="section_message">Message</string>
     <string name="section_status">Status</string>
-    <string name="section_raw_response">Server response</string>
+    <string name="section_raw_response">Encrypted wire response</string>
     <string name="section_acknowledgment">Decrypted acknowledgment</string>
     <string name="action_send">Encrypt and send</string>
     <string name="action_sending">Sending…</string>
@@ -14,6 +14,9 @@
     <string name="status_sending">Encrypting and sending…</string>
     <string name="status_received">Response received</string>
     <string name="status_cancelled">Request cancelled</string>
+    <string name="status_failed">Request failed</string>
+    <string name="status_validation">Message required</string>
+    <string name="status_configuration">Configuration error</string>
     <string name="placeholder_raw_response">No response received yet.</string>
     <string name="placeholder_acknowledgment">A valid response will be decrypted here.</string>
     <string name="configuration_error">Configuration error: %1$s</string>
