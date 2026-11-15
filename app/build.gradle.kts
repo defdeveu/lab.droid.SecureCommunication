@@ -5,28 +5,27 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-val defaultEndpoint = "https://zsk.labs.def.dev/secure-communication/request"
-
-val labEndpoint = rootProject.file("lab.local.properties")
-    .takeIf { it.exists() }
-    ?.let { file ->
-        Properties().apply { file.inputStream().use { stream -> load(stream) } }
-            .getProperty("lab.endpoint")
-    }
-    ?: defaultEndpoint
+val labProperties = Properties().apply {
+    rootProject.file("lab.properties").inputStream().use { load(it) }
+    rootProject.file("lab.local.properties").takeIf { it.exists() }
+        ?.inputStream()?.use { load(it) }
+}
+val labEndpoint = labProperties.getProperty("lab.endpoint").orEmpty()
+val endpointLiteral = "\"" + labEndpoint.replace("\\", "\\\\").replace("\"", "\\\"")
+    .replace("\n", "\\n").replace("\r", "\\r") + "\""
 
 android {
-    namespace = "dev.def.lab.droid.securecommunication"
+    namespace = "defdev.labdroid.securecommunication"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "dev.def.lab.droid.securecommunication"
-        minSdk = 24
-        targetSdk = 37
+        applicationId = "defdev.labdroid.securecommunication"
+        minSdk = 30
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "LAB_ENDPOINT", "\"$labEndpoint\"")
+        buildConfigField("String", "LAB_ENDPOINT", endpointLiteral)
     }
 
     buildTypes {

@@ -8,8 +8,10 @@ between.
 - Android Studio Rabbit (2026.2) or newer, with Android SDK platform 37 and
   build-tools 37.0.0
 - JDK 17 or newer; Android Studio's bundled JBR works
-- A device or emulator running Android 7.0 (API 24) or newer
+- A device or emulator running Android 11 (API 30) or newer
 - Network access to the training server
+
+The app targets Android 15 (API 35) and compiles against API 37.
 
 ## 2. Build and install
 
@@ -20,44 +22,30 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ## 3. Run
 
-1. Launch **Secure Communication**.
+1. Launch **Secure Communication Lab**.
 2. Type a message and press **Encrypt and send**.
-3. Watch the status line, then read the **Server response** pane and the
+3. Watch the status line, then read the **Encrypted wire response** pane and the
    **Decrypted acknowledgment** pane.
 4. Press **Cancel** while a request is in flight to abort it.
 
 ## 4. Pointing at a local server
 
-The local edge serves a certificate for `localhost`, so keep that name and bridge
-the port instead of re-addressing the endpoint:
+The supplied `lab.properties` already selects the course server; no local
+file is required. Only when the trainer requests another endpoint, create
+ignored `lab.local.properties` with the trainer's supplied `lab.endpoint`
+value. Sync, rebuild and reinstall after changing it. Remove the override
+and rebuild to return to the supplied course configuration.
 
-```sh
-adb reverse tcp:8443 tcp:8443
-```
-
-With the bridge in place, copy `lab.local.properties.example` to
-`lab.local.properties` and set:
-
-```properties
-lab.endpoint=https://localhost:8443/secure-communication/request
-```
-
-Rebuild after changing the override, because it is read at build time. The
-bridge forwards the device or emulator's `localhost:8443` to the machine
-running `adb`, so the server must be listening there; when the server runs in a
-virtualised guest, forward its port to that machine first.
-
-The app trusts system CAs only, while a debug build's network security config
-also admits user-installed CAs, so install the edge's root certificate on the
-device or emulator (Settings → Security → Encryption & credentials → Install a
-certificate → CA certificate) and the request can succeed.
+Follow the trainer's routing and certificate-setup instructions. An endpoint
+override does not configure a server, port forwarding or device trust.
 
 ## 5. Notes
 
-- A local HTTPS server needs its root certificate trusted as described above.
-- On a physical device, bridge the port the same way with `adb reverse`; the
-  emulator's host alias `10.0.2.2` is not usable here, because the certificate
-  is issued for `localhost`.
+- The installed application ID is `defdev.labdroid.securecommunication`.
+- The earlier `dev.def.lab.droid.securecommunication` build is a separate
+  installed app; select **Secure Communication Lab** from the current build.
+- Android Studio's bundled JBR can be selected as the Gradle JDK; shell
+  builds can select it through `JAVA_HOME`.
 
 ## 6. Validated emulator setup
 
@@ -70,8 +58,3 @@ The instrumented tests and the runtime rows were run against this setup:
 | ABI | arm64-v8a |
 | Build | `BE2A.250530.026.D1` |
 | Emulator | reachable over adb as `emulator-5554`; the emulator console is not exposed on this connection, so the AVD name and the emulator build are not readable from here |
-
-This workspace's SDK also carries the API 37 Play arm64 image
-(`system-images;android-37.0;google_apis_playstore;arm64-v8a`) and the local
-emulator binary 37.2.12.0, which is the intended target once a local emulator
-can run.

@@ -9,8 +9,10 @@ the raw response together with its decrypted acknowledgment.
 - Android Studio Rabbit (2026.2) or newer
 - JDK 17 or newer (Android Studio's bundled JBR works)
 - Android SDK platform 37 and build-tools 37.0.0
-- A device or emulator running Android 7.0 (API 24) or newer
+- A device or emulator running Android 11 (API 30) or newer
 - Network access to the training server
+
+The app targets Android 15 (API 35).
 
 ## Build and install
 
@@ -21,9 +23,8 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ## Endpoint
 
-The app posts to the hosted training server by default. A machine-local
-override goes in `lab.local.properties`, which is gitignored;
-`lab.local.properties.example` shows the key.
+The course endpoint is configured in the supplied `lab.properties`. Normal
+course use needs no local configuration file or endpoint setup.
 
 ## Tests
 
@@ -37,3 +38,9 @@ check runs as well:
 ```sh
 SECURE_COMMUNICATION_INTEROP=1 ./gradlew testDebugUnitTest --tests '*ServerInteropTest*'
 ```
+
+## Font and icon licenses
+
+Bundled variable fonts and their licenses are listed in
+`app/src/main/assets/licenses/fonts.txt`. The Shield Moon icon uses Material
+Symbols Rounded under `app/src/main/assets/licenses/material-symbols.LICENSE.txt`.

@@ -1,0 +1,10 @@
+Bundled variable fonts: Noto Sans, Noto Sans Mono, Noto Serif Display.
+Source: https://github.com/google/fonts/tree/2fe1e8c6b137fb13041a7cfca6fdcd8a910ea4dc/ofl
+The original font files are unchanged apart from their Android resource filenames.
+
+Noto Sans: ofl/notosans/NotoSans[wdth,wght].ttf
+License: notosans-OFL.txt
+Noto Sans Mono: ofl/notosansmono/NotoSansMono[wdth,wght].ttf
+License: notosansmono-OFL.txt
+Noto Serif Display: ofl/notoserifdisplay/NotoSerifDisplay[wdth,wght].ttf
+License: notoserifdisplay-OFL.txt
