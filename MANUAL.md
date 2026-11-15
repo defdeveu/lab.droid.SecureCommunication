@@ -46,15 +46,3 @@ override does not configure a server, port forwarding or device trust.
   installed app; select **Secure Communication Lab** from the current build.
 - Android Studio's bundled JBR can be selected as the Gradle JDK; shell
   builds can select it through `JAVA_HOME`.
-
-## 6. Validated emulator setup
-
-The instrumented tests and the runtime rows were run against this setup:
-
-| Item | Value |
-| --- | --- |
-| System image | Google Play arm64 image for API 36, product `sdk_gphone64_arm64` (Play Store present) |
-| API / extension level | 36 (Android 16) / SDK extensions 17 |
-| ABI | arm64-v8a |
-| Build | `BE2A.250530.026.D1` |
-| Emulator | reachable over adb as `emulator-5554`; the emulator console is not exposed on this connection, so the AVD name and the emulator build are not readable from here |
