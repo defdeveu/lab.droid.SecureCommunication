@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 object ClassroomMaterial {
     const val KEY = "00112233445566778899aabbccddeeff"

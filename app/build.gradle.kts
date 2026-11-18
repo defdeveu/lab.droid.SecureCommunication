@@ -15,13 +15,13 @@ val endpointLiteral = "\"" + labEndpoint.replace("\\", "\\\\").replace("\"", "\\
     .replace("\n", "\\n").replace("\r", "\\r") + "\""
 
 android {
-    namespace = "defdev.labdroid.securecommunication"
+    namespace = "defdev.labs.droid.securecommunication"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "defdev.labdroid.securecommunication"
+        applicationId = "defdev.labs.droid.securecommunication"
         minSdk = 30
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -36,8 +36,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
     }
 
     buildFeatures {

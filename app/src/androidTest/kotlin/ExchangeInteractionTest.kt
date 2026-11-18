@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
 import android.graphics.Bitmap
 import android.accessibilityservice.AccessibilityServiceInfo
@@ -38,12 +38,12 @@ import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.pressKey
 import androidx.compose.ui.test.printToString
 import androidx.test.platform.app.InstrumentationRegistry
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.error.LabFailure
-import defdev.labdroid.securecommunication.service.ExchangeResult
-import defdev.labdroid.securecommunication.service.SecureCommunicationService
-import defdev.labdroid.securecommunication.theme.SecureCommunicationTheme
-import defdev.labdroid.securecommunication.ui.ExchangeScreen
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.error.LabFailure
+import defdev.labs.droid.securecommunication.service.ExchangeResult
+import defdev.labs.droid.securecommunication.service.SecureCommunicationService
+import defdev.labs.droid.securecommunication.theme.SecureCommunicationTheme
+import defdev.labs.droid.securecommunication.ui.ExchangeScreen
 import java.io.File
 import java.util.concurrent.atomic.AtomicInteger
 import kotlinx.coroutines.CompletableDeferred

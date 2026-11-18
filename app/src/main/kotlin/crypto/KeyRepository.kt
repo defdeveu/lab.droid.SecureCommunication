@@ -1,8 +1,8 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 import android.content.res.AssetManager
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.error.LabFailure
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.error.LabFailure
 import java.io.IOException
 import java.security.GeneralSecurityException
 import java.security.PrivateKey

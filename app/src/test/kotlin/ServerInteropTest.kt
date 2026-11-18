@@ -1,9 +1,9 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
-import defdev.labdroid.securecommunication.crypto.KeyRepository
-import defdev.labdroid.securecommunication.crypto.PemCodec
-import defdev.labdroid.securecommunication.crypto.Pkcs1
-import defdev.labdroid.securecommunication.service.OkHttpSecureCommunicationService
+import defdev.labs.droid.securecommunication.crypto.KeyRepository
+import defdev.labs.droid.securecommunication.crypto.PemCodec
+import defdev.labs.droid.securecommunication.crypto.Pkcs1
+import defdev.labs.droid.securecommunication.service.OkHttpSecureCommunicationService
 import java.io.File
 import java.security.PrivateKey
 import java.security.PublicKey

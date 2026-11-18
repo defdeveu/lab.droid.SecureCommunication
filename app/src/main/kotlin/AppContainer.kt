@@ -1,14 +1,14 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import defdev.labdroid.securecommunication.crypto.AssetKeyRepository
-import defdev.labdroid.securecommunication.crypto.KeyRepository
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.service.OkHttpSecureCommunicationService
-import defdev.labdroid.securecommunication.service.SecureCommunicationService
+import defdev.labs.droid.securecommunication.crypto.AssetKeyRepository
+import defdev.labs.droid.securecommunication.crypto.KeyRepository
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.service.OkHttpSecureCommunicationService
+import defdev.labs.droid.securecommunication.service.SecureCommunicationService
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 class AppContainer(context: Context) {

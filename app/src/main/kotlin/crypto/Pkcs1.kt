@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 import java.security.KeyFactory
 import java.security.PrivateKey

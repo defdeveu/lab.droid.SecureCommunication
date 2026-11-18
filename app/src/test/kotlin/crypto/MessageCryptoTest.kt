@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule

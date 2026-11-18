@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 object PemCodec {
     fun decode(pem: String): ByteArray? {

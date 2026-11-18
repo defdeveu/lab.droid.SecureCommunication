@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.theme
+package defdev.labs.droid.securecommunication.theme
 
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color

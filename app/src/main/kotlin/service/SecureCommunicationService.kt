@@ -1,13 +1,13 @@
-package defdev.labdroid.securecommunication.service
+package defdev.labs.droid.securecommunication.service
 
 import android.util.Log
-import defdev.labdroid.securecommunication.crypto.Base64Codec
-import defdev.labdroid.securecommunication.crypto.ClassroomMaterial
-import defdev.labdroid.securecommunication.crypto.KeyRepository
-import defdev.labdroid.securecommunication.crypto.MessageCrypto
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.error.LabFailure
-import defdev.labdroid.securecommunication.protocol.Envelope
+import defdev.labs.droid.securecommunication.crypto.Base64Codec
+import defdev.labs.droid.securecommunication.crypto.ClassroomMaterial
+import defdev.labs.droid.securecommunication.crypto.KeyRepository
+import defdev.labs.droid.securecommunication.crypto.MessageCrypto
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.error.LabFailure
+import defdev.labs.droid.securecommunication.protocol.Envelope
 import java.io.IOException
 import java.security.GeneralSecurityException
 import kotlin.coroutines.resume
@@ -110,7 +110,7 @@ class OkHttpSecureCommunicationService(
                             Received(
                                 status = it.code,
                                 contentType = it.header("Content-Type").orEmpty(),
-                                body = it.body?.string().orEmpty(),
+                                body = it.body.string(),
                             )
                         }
                     } catch (failure: IOException) {

@@ -1,6 +1,6 @@
-package defdev.labdroid.securecommunication.protocol
+package defdev.labs.droid.securecommunication.protocol
 
-import defdev.labdroid.securecommunication.crypto.Base64Codec
+import defdev.labs.droid.securecommunication.crypto.Base64Codec
 
 object Envelope {
     private const val OPENING = "<response>"

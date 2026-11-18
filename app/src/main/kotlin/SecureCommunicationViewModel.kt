@@ -1,10 +1,10 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.error.LabFailure
-import defdev.labdroid.securecommunication.service.SecureCommunicationService
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.error.LabFailure
+import defdev.labs.droid.securecommunication.service.SecureCommunicationService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.crypto
+package defdev.labs.droid.securecommunication.crypto
 
 import okio.ByteString.Companion.decodeBase64
 import okio.ByteString.Companion.toByteString

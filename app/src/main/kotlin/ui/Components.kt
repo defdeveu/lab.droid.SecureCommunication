@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.ui
+package defdev.labs.droid.securecommunication.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,9 +27,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import defdev.labdroid.securecommunication.R
-import defdev.labdroid.securecommunication.theme.LabMono
-import defdev.labdroid.securecommunication.theme.LabTitle
+import defdev.labs.droid.securecommunication.R
+import defdev.labs.droid.securecommunication.theme.LabMono
+import defdev.labs.droid.securecommunication.theme.LabTitle
 
 @Composable
 fun LabHeader() {

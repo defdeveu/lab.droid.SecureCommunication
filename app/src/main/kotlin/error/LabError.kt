@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.error
+package defdev.labs.droid.securecommunication.error
 
 sealed class LabError {
     data object EmptyMessage : LabError()

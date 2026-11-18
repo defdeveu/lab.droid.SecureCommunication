@@ -1,8 +1,8 @@
-package defdev.labdroid.securecommunication.protocol
+package defdev.labs.droid.securecommunication.protocol
 
-import defdev.labdroid.securecommunication.crypto.Base64Codec
-import defdev.labdroid.securecommunication.crypto.ClassroomMaterial
-import defdev.labdroid.securecommunication.crypto.MessageCrypto
+import defdev.labs.droid.securecommunication.crypto.Base64Codec
+import defdev.labs.droid.securecommunication.crypto.ClassroomMaterial
+import defdev.labs.droid.securecommunication.crypto.MessageCrypto
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

@@ -12,5 +12,3 @@ local.properties
 
 # Machine-local endpoint override
 lab.local.properties
-
-gradle-daemon-jvm.properties

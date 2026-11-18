@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.viewmodel.compose.viewModel
-import defdev.labdroid.securecommunication.theme.SecureCommunicationTheme
-import defdev.labdroid.securecommunication.ui.ExchangeScreen
+import defdev.labs.droid.securecommunication.theme.SecureCommunicationTheme
+import defdev.labs.droid.securecommunication.ui.ExchangeScreen
 
 class MainActivity : ComponentActivity() {
     private val container by lazy { AppContainer(applicationContext) }

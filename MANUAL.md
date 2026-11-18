@@ -5,13 +5,21 @@ between.
 
 ## 1. Prerequisites
 
-- Android Studio Rabbit (2026.2) or newer, with Android SDK platform 37 and
+- Android Studio Rabbit 2 (2026.2.2) or newer, with Android SDK platform 37 and
   build-tools 37.0.0
-- JDK 17 or newer; Android Studio's bundled JBR works
+- JetBrains Runtime 25 from Android Studio's bundled JBR, selected through
+  `gradle/gradle-daemon-jvm.properties`; no separate JDK installation needed
 - A device or emulator running Android 11 (API 30) or newer
 - Network access to the training server
 
-The app targets Android 15 (API 35) and compiles against API 37.
+The app targets and compiles against Android 17 (API 37), with Java/Kotlin
+compilation target 25. For a shell build, select your installed bundled JBR
+through `JAVA_HOME` if needed.
+
+For Android Studio Quail 4, change only your local checkout's `agp` value in
+`gradle/libs.versions.toml` from `9.5.1` to `9.4.1` before sync, and use
+JetBrains Runtime 25. Leave that compatibility edit uncommitted. The default
+AGP 9.5.1 configuration requires Rabbit 2 or newer.
 
 ## 2. Build and install
 
@@ -41,8 +49,5 @@ override does not configure a server, port forwarding or device trust.
 
 ## 5. Notes
 
-- The installed application ID is `defdev.labdroid.securecommunication`.
-- The earlier `dev.def.lab.droid.securecommunication` build is a separate
-  installed app; select **Secure Communication Lab** from the current build.
-- Android Studio's bundled JBR can be selected as the Gradle JDK; shell
-  builds can select it through `JAVA_HOME`.
+- The installed application ID is `defdev.labs.droid.securecommunication`.
+- Project daemon JVM criteria keep Studio and CLI builds on JetBrains Runtime 25.

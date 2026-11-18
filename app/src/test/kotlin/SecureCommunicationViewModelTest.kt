@@ -1,9 +1,9 @@
-package defdev.labdroid.securecommunication
+package defdev.labs.droid.securecommunication
 
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.error.LabFailure
-import defdev.labdroid.securecommunication.service.ExchangeResult
-import defdev.labdroid.securecommunication.service.SecureCommunicationService
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.error.LabFailure
+import defdev.labs.droid.securecommunication.service.ExchangeResult
+import defdev.labs.droid.securecommunication.service.SecureCommunicationService
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers

@@ -6,13 +6,15 @@ the raw response together with its decrypted acknowledgment.
 
 ## Requirements
 
-- Android Studio Rabbit (2026.2) or newer
-- JDK 17 or newer (Android Studio's bundled JBR works)
+- Android Studio Rabbit 2 (2026.2.2) or newer
+- Android Studio's bundled JetBrains Runtime 25; no separate JDK installation required
 - Android SDK platform 37 and build-tools 37.0.0
 - A device or emulator running Android 11 (API 30) or newer
 - Network access to the training server
 
-The app targets Android 15 (API 35).
+The app targets Android 17 (API 37). Gradle uses the daemon JVM criteria in
+`gradle/gradle-daemon-jvm.properties`; Java/Kotlin compilation targets Java 25,
+with Kotlin 2.4.21.
 
 ## Build and install
 

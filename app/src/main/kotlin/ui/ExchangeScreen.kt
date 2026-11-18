@@ -1,4 +1,4 @@
-package defdev.labdroid.securecommunication.ui
+package defdev.labs.droid.securecommunication.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
@@ -40,11 +40,11 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import defdev.labdroid.securecommunication.ExchangeStatus
-import defdev.labdroid.securecommunication.R
-import defdev.labdroid.securecommunication.SecureCommunicationViewModel
-import defdev.labdroid.securecommunication.error.LabError
-import defdev.labdroid.securecommunication.theme.LabMono
+import defdev.labs.droid.securecommunication.ExchangeStatus
+import defdev.labs.droid.securecommunication.R
+import defdev.labs.droid.securecommunication.SecureCommunicationViewModel
+import defdev.labs.droid.securecommunication.error.LabError
+import defdev.labs.droid.securecommunication.theme.LabMono
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
